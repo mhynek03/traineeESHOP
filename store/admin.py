@@ -23,7 +23,4 @@ class ProductAdmin(admin.ModelAdmin):
                 (None, {'fields': ('name', 'price', 'description', 'image', 'digital', 'category', 'stock')}),
             ]
 
-    # Assuming slug is a field in your Product model
-
-# Register ProductAdmin for the Product model
 admin.site.register(Product, ProductAdmin)

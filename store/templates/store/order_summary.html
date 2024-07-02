@@ -1,6 +1,6 @@
 {% extends 'store/main.html' %}
 {% block content %}
-<h2>Order Summary</h2>
+<h2>Shrnutí objednávky</h2>
 <p>ID Objednávky: {{ order.id }}</p>
 <p>Datum objednávky: {{ order.date_ordered }}</p>
 
@@ -17,11 +17,11 @@
         <tr>
             <td>{{ item.product.name }}</td>
             <td>{{ item.quantity }}</td>
-            <td>{{ item.get_total }}</td>
+            <td>{{ item.get_total }} CZK</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<p>Celkem: {{ order.get_cart_total }}</p>
+<p>Celkem: {{ order.get_cart_total }} CZK</p>
 {% endblock %}

@@ -61,7 +61,6 @@ def checkout(request):
         items = order.orderitem_set.all() 
         cartItems = order.get_cart_items
     else:
-        # Vytvoří prázdnou objednávku pro nepřihlášeného uživatele
         order = {'get_cart_total': 0, 'get_cart_items': 0, 'shipping':False}
         items = []
         cartItems = order['get_cart_items']
@@ -163,8 +162,7 @@ def processOrder(request):
                 zipcode=data['shipping']['zipcode'],
             )
         
-        # Redirect to order summary page after successfully completing the order
-        return redirect('order_summary', order_id=order.id)
+        return JsonResponse({'order_id': order.id}, safe=False)
     else:
         return JsonResponse('Failed to complete payment.', safe=False)
 

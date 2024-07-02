@@ -19,7 +19,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=9, decimal_places=2)
     digital = models.BooleanField(default=False)  # default=False stačí, null=True a blank=True jsou zbytečné #boolean = 1 nebo 0 (true or false)
-    image = models.ImageField(null=True, blank=True)  # Použít default=, pokud chcete specifikovat výchozí obrázek
+    image = models.ImageField(null=True, blank=True) 
     description = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     stock = models.PositiveIntegerField(default = 0)

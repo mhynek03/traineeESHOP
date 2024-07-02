@@ -16,7 +16,7 @@ def cookieCart(request):
     for i in cart:
         try:
             product = Product.objects.get(id=i)
-            if cart[i]['quantity'] <= product.stock:  # Kontrola dostupného množství na skladě
+            if cart[i]['quantity'] <= product.stock: 
                 total = product.price * cart[i]['quantity']
 
                 order['get_cart_total'] += total
@@ -37,7 +37,6 @@ def cookieCart(request):
                 if not product.digital:
                     order['shipping'] = True
             else:
-                # Pokud je počet kusů v košíku větší než dostupné množství na skladě, přidat jen maximální dostupné množství
                 total = product.price * product.stock
 
                 order['get_cart_total'] += total
@@ -58,7 +57,6 @@ def cookieCart(request):
                 if not product.digital:
                     order['shipping'] = True
 
-                # Aktualizovat množství v košíku na maximální dostupné množství
                 cart[i]['quantity'] = product.stock
 
         except Product.DoesNotExist:
